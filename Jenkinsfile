@@ -99,9 +99,11 @@ pipeline {
           steps {
 
             echo "Pushing image to docker hub"
-            bat "docker tag i-${username}-master ${registry}:$BUILD_NUMBER"
+            bat "docker tag i-${username}-${BRANCH_NAME} ${registry}:$BUILD_NUMBER"
+            bat "docker tag i-${username}-${BRANCH_NAME} ${registry}:latest"
             withDockerRegistry(credentialsId: 'DockerHub', url: '') {
               bat "docker push ${registry}:$BUILD_NUMBER"
+              bat "docker push ${registry}:latest"
             }
 
           }

@@ -15,7 +15,7 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout([$class: 'GitSCM', branches: [
-          [name: '*/master']
+          [name: env.BRANCH_NAME]
         ], extensions: [], userRemoteConfigs: [
           [url: env.gitHubUrl]
         ]])

@@ -115,6 +115,13 @@ pipeline {
         bat "docker run --name c-${username}-${BRANCH_NAME} -d -p 7200:80 i-${username}-${BRANCH_NAME}"
       }
     }
+    
+    stage('kubernetes deployment') {
+            steps {
+                echo "kubernetes deployment"
+                bat "kubectl apply -f deployment.yaml"
+            }
+        }
   }
     
   post {

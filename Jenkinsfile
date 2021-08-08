@@ -104,7 +104,8 @@ pipeline {
             steps {
                 echo "kubernetes deployment"
                 // bat "gcloud container clusters get-credentials nagp-dotnet-1 --zone us-central1-c --project optimistic-yeti-321307"
-               bat "kubectl apply -f deployment.yaml"
+               //bat "kubectl apply -f deployment.yaml"
+              bat 'dotnet build --configuration Release"'
              
             }
         }

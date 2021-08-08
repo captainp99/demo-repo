@@ -6,7 +6,6 @@ pipeline {
     scannerHome = tool name: 'sonar_scanner_dotnet'
     username = 'parasjain01'
     registry = 'paras22/nagp-devops-assign-1'
-    TOKEN_FROM_WITH_CREDENTIALS = 
     gitHubUrl = 'https://github.com/captainp99/app_parasjain01'
   }
 

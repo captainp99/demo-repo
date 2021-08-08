@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnet-nagp-deployment-multibranch
+  name: dotnet-nagp-deployment-develop
   namespace: kubernetes-cluster-parasjain01
   labels:
-    app: dotnet-nagp-multibranch
+    app: dotnet-nagp-develop
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: dotnet-nagp-multibranch
+      app: dotnet-nagp-develop
   template:
     metadata:
       labels:
-        app: dotnet-nagp-multibranch
+        app: dotnet-nagp-develop
     spec:
       containers:
-        - name: dotnet-nagp-multibranch
+        - name: dotnet-nagp-develop
           image: paras22/nagp-devops-assign-1:latest
           ports:
             - name: http
@@ -26,12 +26,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dotnet-nagp-multibranch
+  name: dotnet-nagp-develop
   namespace: kubernetes-cluster-parasjain01
 spec:
   type: NodePort
   selector:
-    app: dotnet-nagp-multibranch
+    app: dotnet-nagp-develop
   ports:
   - port: 80
     protocol: TCP

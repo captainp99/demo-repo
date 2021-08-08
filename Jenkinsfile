@@ -34,7 +34,7 @@ pipeline {
       steps {
         echo "Start SonarQube Analysis"
         withSonarQubeEnv("Test_Sonar") {
-          bat "${scannerHome}\\SonarScanner.MSBuild.exe begin /k:sonar-${username} /n:nagp-devops-assign-1 /v:1.0 -d:sonar.cs.opencover.reportsPaths='test-project/TestResults/*/coverage.opencover.xml' -d:sonar.cs.xunit.reportsPaths='test-project/TestResults/TestFileReport.xml'"
+          bat "${scannerHome}\\SonarScanner.MSBuild.exe begin /k:sonar-${username} -d:sonar.cs.opencover.reportsPaths=test-project/coverage.opencover.xml -d:sonar.cs.xunit.reportsPaths='test-project/TestResults/TestFileReport.xml'"                                                                                                      
         }
       }
     }
@@ -54,7 +54,7 @@ pipeline {
     stage('Test Case Execution') {
       steps {
         echo "Execute Unit Test"
-        bat "dotnet test test-project\\test-project.csproj --settings coverlet.runsettings -l:trx;LogFileName=TestFileReport.xml"
+        bat "dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover -l:trx;LogFileName=TestFileReport.xml"
       }
     }
 

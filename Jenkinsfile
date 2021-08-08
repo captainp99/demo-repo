@@ -6,7 +6,7 @@ pipeline {
     scannerHome = tool name: 'sonar_scanner_dotnet'
     username = 'parasjain01'
     registry = 'paras22/nagp-devops-assign-1'
-
+    TOKEN_FROM_WITH_CREDENTIALS = 
     gitHubUrl = 'https://github.com/captainp99/app_parasjain01'
   }
 
@@ -105,8 +105,8 @@ pipeline {
             steps {
                 echo "kubernetes deployment"
                 // bat "gcloud container clusters get-credentials nagp-dotnet-1 --zone us-central1-c --project optimistic-yeti-321307"
-               // bat "kubectl apply -f deployment.yaml"
-               bat 'dotnet build --configuration Release"'
+               bat "kubectl apply -f deployment.yaml"
+             
             }
         }
   }

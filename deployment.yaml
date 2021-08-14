@@ -38,7 +38,7 @@ spec:
       protocol: TCP
       nodePort: 30157
 ---
-apiVersion: v1
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: dotnet-nagp-master-autoscale

@@ -19,8 +19,8 @@ spec:
         - name: dotnet-nagp-master
           image: paras22/nagp-devops-assign-1:latest
           envFrom:
-          - configMapRef:
-               name: app-settings
+            - configMapRef:
+                 name: app-settings
           ports:
             - name: http
               containerPort: 80

@@ -29,7 +29,7 @@ metadata:
   name: dotnet-nagp-master
   namespace: kubernetes-cluster-parasjain01
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: dotnet-nagp-master
   ports:
